@@ -1,0 +1,30 @@
+body {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+
+canvas {
+    background-color: black;
+}
+
+body {
+    background-image: url("img/canyon.webp");
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    
+    background-size: 1890px;
+    background-position: 0px -280px;
+    margin: 0;
+
+    /*background-image: url("img/canyon.webp");
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: 0px 0px;*/
+}
