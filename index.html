@@ -1,36 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
-<script src="models/drawable-object.class.js"></script>
-<script src="models/movable-object.class.js"></script>
-<script src="models/character.class.js"></script>
-<script src="models/chicken.class.js"></script>
-<script src="models/cloud.class.js"></script>
-<script src="models/coin.class.js"></script>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="style.css">
+    <script src="models/drawable-object.class.js"></script>
+    <script src="models/movable-object.class.js"></script>
+    <script src="models/character.class.js"></script>
+    <script src="models/chicken.class.js"></script>
+    <script src="models/chicken_small.class.js"></script>
 
-<script src="models/status-bar.class.js"></script>
-<script src="models/status-bar-bottle.class.js"></script>
-<script src="models/world.class.js"></script>
-<script src="models/background-object.class.js"></script>
+    <script src="models/cloud.class.js"></script>
+    <script src="models/coin.class.js"></script>
+    <script src="models/bottle.class.js"></script>
 
-<script src="models/keyboard.class.js"></script>
-<script src="models/level.class.js"></script>
-<script src="models/endboss.class.js"></script>
-<script src="models/throwable-object.class.js"></script>
-<script src="levels/level1.js"></script>
-<script src="game.js"></script>
+
+    <script src="models/status-bar.class.js"></script>
+    <script src="models/status-bar-bottle.class.js"></script>
+    <script src="models/status-bar-coin.class.js"></script>
+    <script src="models/status-bar-endboss.class.js"></script>
+    <script src="clearObjects.js"></script>
+
+    <script src="models/world.class.js"></script>
+
+
+    <script src="models/background-object.class.js"></script>
+    <script src="models/treasure.class.js"></script>
+    <script src="models/sign.class.js"></script>
+    <script src="models/treasureObjects.class.js"></script>
+
+
+
+    <script src="models/keyboard.class.js"></script>
+    <script src="models/level.class.js"></script>
+    <script src="models/endboss.class.js"></script>
+    <script src="models/throwable-object.class.js"></script>
+
+    <script src="levels/level1.js"></script>
+    <script src="game.js"></script>
+
     <title>El Pollo Loco</title>
 </head>
-<body onload="init()">
-    
-<h1>El Pollo Loco</h1>
+
+<body id="body">
+
+    <div id="startScreen" class="startScreen"></div>
+
+    <h1 class="headerRotate" id="headerRotate">Pls rotate your phone for a better gaming experience</h1>
+
+    <h1 class="header">El Pollo Loco</h1>
 
 
-<canvas id="canvas" width="720px" height="480px"></canvas>
+    <img class="startScreenImage" id="startScreenImage" src="img/9_intro_outro_screens/start/startscreen_1.png">
+
+
+    <div class="fullScreen" id="fullScreen">
+
+
+
+        <canvas class="canvas" id="canvas" width="720px" height="480px"></canvas>
+        <img class="startScreenImageMobile" id="startScreenImageMobile"
+            src="img/9_intro_outro_screens/start/startscreen_1.png">
+
+        <div class="buttonLeft d-none">
+            <img id="arrowLeft" class="arrowLeft" src="img/arrowLeft.png">
+        </div>
+
+        <div class="buttonRight d-none">
+            <img id="arrowRight" class="arrowRight" src="img/arrowRight.png">
+        </div>
+
+        <div class="buttonUp d-none">
+            <img id="arrowUp" class="arrowUp" src="img/arrowUp.png">
+        </div>
+
+        <div class="buttonAttack d-none">
+            <img id="arrowAttack" class="arrowAttack" src="img/arrowAttack.png">
+        </div>
+
+        <p class="restart d-none" id="restart" onclick="restart()">Restart</p>
+
+
+
+
+
+
+
+
+
+
+
+        <img class="mexicanGuy d-none" id="mexicanGuy" src="img/mexicanGuy.png">
+        <img class="gameOver d-none" id="gameOver" src="img/9_intro_outro_screens/game_over/game over.png">
+        <img class="winner d-none" id="winner" src="img/winner.png">
+        <img onclick="muteSound()" class="soundMute" id="soundMute" src="img/soundMute.png">
+        <!--<img class="soundUnmute d-none" id="soundUnmute" src="img/soundUnmute.png">-->
+
+
+    </div>
+
+
+    <div onclick="closePopUp()" class="closePopUp d-none" id="closePopUp">
+
+    </div>
+
+
+    <div class="helpPopUp d-none" id="helpPopUp">
+
+        <table class="styleTable">
+            <tr>
+                <th>Right Arrow Key:</th>
+                <th><img class="help1" src="img/helpRight.png"></th>
+                <th>Walk Right</th>
+            </tr>
+            <tr>
+                <th>Left Arrow Key:</th>
+                <th><img class="help2" src="img/helpLeft.png"></th>
+                <th>Walk Left</th>
+            </tr>
+            <tr>
+                <th>Space:</th>
+                <th><img class="help3" src="img/helpJump.png"></th>
+                <th>Jump</th>
+            </tr>
+            <tr>
+                <th>D:</th>
+                <th><img class="help4" src="img/helpBottle.png"></th>
+                <th>Throw a Salsa Bottle</th>
+            </tr>
+        </table>
+
+    </div>
+
+
+
+
+    <p class="fullScreenButton" id="fullScreenButton" onclick="fullScreen()">Enter here for Fullscreen</p>
+    <p class="rotateButton" id="rotateButton" onclick="openLandscape()">Enter here for Landscape</p>
+
+
+
+
+
+    <div onclick="openPopUp()" class="how2play " id="how2play">How to play?</div>
+    <div onclick="startGame();playMusic();"><img class="startGameImage" id="startGameImage" src="img/start.png"></div>
+
 
 </body>
+
 </html>
